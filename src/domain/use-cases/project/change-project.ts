@@ -1,5 +1,3 @@
-import { Project } from '../../entities/project/project'
-
 export type ChangeProjectModel = {
   name: string
   description: string
@@ -8,5 +6,5 @@ export type ChangeProjectModel = {
 }
 
 export interface ChangeProject {
-  edit(project: ChangeProjectModel): Promise<Project>
+  edit(project: ChangeProjectModel): Promise<void>
 }
