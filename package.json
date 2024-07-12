@@ -1,0 +1,23 @@
+{
+  "name": "dysrup-technical-interview",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "vitest",
+    "start:dev": "tsx watch server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^2.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
