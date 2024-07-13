@@ -1,4 +1,4 @@
-import { Uuid } from "@/src/shared/domain/uuid"
+import { Uuid } from '@/src/shared/domain/uuid'
 
 export type ProjectConstructorProps = {
   id?: Uuid
@@ -13,8 +13,11 @@ export class Project {
   description: string
   started_at: Date
 
-  constructor(props: ProjectConstructorProps){
+  constructor(props: ProjectConstructorProps) {
     this.id = props.id ?? new Uuid()
+    this.name = props.name
+    this.description = props.description
+    this.started_at = props.started_at
   }
 
   changeName(name: string) {
