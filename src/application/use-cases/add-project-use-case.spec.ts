@@ -1,5 +1,4 @@
 import { Project } from '@/src/domain/entities/project/project'
-import { InMemoryProjectRepository } from '../protocols/repositories/in-memory/in-memory-project-repository'
 import { ProjectRepository } from '../protocols/repositories/project-repository'
 import { makeProjectModel, makeProjectRepositoryStub } from '../tests/factories'
 import { AddProjectUseCase } from './add-project-use-case'

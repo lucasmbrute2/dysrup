@@ -1,15 +1,15 @@
-import { Uuid } from "@/src/shared/domain/uuid";
-import { Project, ProjectConstructorProps } from "./project";
+import { Uuid } from '@/src/shared/domain/uuid'
+import { Project, ProjectConstructorProps } from './project'
 
-export const makeProjectProps = ():ProjectConstructorProps => ({
+export const makeProjectProps = (): ProjectConstructorProps => ({
   id: new Uuid(),
+  name: 'any-name',
   description: 'any-description',
-  name: 'any-name'
 })
 
-export const makeProject = (override?: Partial<Project>): Project=> {
+export const makeProject = (override?: Partial<Project>): Project => {
   return new Project({
     ...makeProjectProps(),
-    ...override
+    ...override,
   })
 }
