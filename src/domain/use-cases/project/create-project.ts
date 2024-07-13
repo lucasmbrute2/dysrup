@@ -1,7 +1,6 @@
-import { Project } from "../../entities/project/project"
+import { Project } from '../../entities/project/project'
 
 export type AddProjectModel = {
-  id?: string
   name: string
   description: string
   started_at?: Date
