@@ -17,7 +17,7 @@ export const makeProjectRepositoryStub = (): ProjectRepository => {
     async edit(id: string, data: Project): Promise<void> {
       return Promise.resolve(null)
     }
-    add(project: Project): Promise<Project> {
+    async add(project: Project): Promise<Project> {
       return Promise.resolve(null)
     }
   }
