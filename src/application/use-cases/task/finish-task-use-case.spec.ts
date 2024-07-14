@@ -1,8 +1,8 @@
 import { makeTask } from '@/src/domain/entities/task/task-factory'
-import { InMemoryTaskRepository } from '../protocols/repositories/in-memory/in-memory-task-repository'
-import { TaskRepository } from '../protocols/repositories/task-repository'
-import { FinishTaskUseCase } from './finish-task-use-case'
 import { Task } from '@/src/domain/entities/task/task'
+import { FinishTaskUseCase } from './finish-task-use-case'
+import { TaskRepository } from '../../protocols/repositories/task-repository'
+import { InMemoryTaskRepository } from '../../protocols/repositories/in-memory/in-memory-task-repository'
 
 type Sut = {
   sut: FinishTaskUseCase

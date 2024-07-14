@@ -1,8 +1,8 @@
 import { Task } from '@/src/domain/entities/task/task'
 import { AddTask, AddTaskModel } from '@/src/domain/use-cases/task/create-task'
-import { ProjectRepository } from '../protocols/repositories/project-repository'
-import { TaskRepository } from '../protocols/repositories/task-repository'
 import { Uuid } from '@/src/shared/domain/uuid'
+import { ProjectRepository } from '../../protocols/repositories/project-repository'
+import { TaskRepository } from '../../protocols/repositories/task-repository'
 
 export class AddTaskUseCase implements AddTask {
   constructor(

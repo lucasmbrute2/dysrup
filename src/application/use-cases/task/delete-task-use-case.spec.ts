@@ -1,7 +1,7 @@
 import { DeleteTask } from '@/src/domain/use-cases/task/delete-task'
-import { TaskRepository } from '../protocols/repositories/task-repository'
+import { TaskRepository } from '../../protocols/repositories/task-repository'
 import { DeleteTaskUseCase } from './delete-task-use-case'
-import { InMemoryTaskRepository } from '../protocols/repositories/in-memory/in-memory-task-repository'
+import { InMemoryTaskRepository } from '../../protocols/repositories/in-memory/in-memory-task-repository'
 import { makeTask } from '@/src/domain/entities/task/task-factory'
 
 type Sut = {

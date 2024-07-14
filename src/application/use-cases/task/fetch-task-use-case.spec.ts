@@ -1,4 +1,4 @@
-import { InMemoryTaskRepository } from '../protocols/repositories/in-memory/in-memory-task-repository'
+import { InMemoryTaskRepository } from '../../protocols/repositories/in-memory/in-memory-task-repository'
 import { FetchTaskUseCase } from './fetch-task-use-case'
 
 type Sut = {

@@ -1,5 +1,5 @@
 import { DeleteTask } from '@/src/domain/use-cases/task/delete-task'
-import { TaskRepository } from '../protocols/repositories/task-repository'
+import { TaskRepository } from '../../protocols/repositories/task-repository'
 
 export class DeleteTaskUseCase implements DeleteTask {
   constructor(private readonly taskRepository: TaskRepository) {}

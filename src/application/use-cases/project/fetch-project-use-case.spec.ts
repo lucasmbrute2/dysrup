@@ -1,8 +1,8 @@
 import { makeProject } from '@/src/domain/entities/project/project-factory'
-import { ProjectRepository } from '../protocols/repositories/project-repository'
-import { FetchProjectUseCase } from './fetch-project-use-case'
-import { InMemoryProjectRepository } from '../protocols/repositories/in-memory/in-memory-project-repository'
+import { ProjectRepository } from '../../protocols/repositories/project-repository'
+import { InMemoryProjectRepository } from '../../protocols/repositories/in-memory/in-memory-project-repository'
 import { Project } from '@/src/domain/entities/project/project'
+import { FetchProjectUseCase } from './fetch-project-use-case'
 
 type Sut = {
   sut: FetchProjectUseCase

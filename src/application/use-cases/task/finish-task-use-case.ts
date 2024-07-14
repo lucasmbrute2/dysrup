@@ -1,6 +1,6 @@
-import { TaskRepository } from '../protocols/repositories/task-repository'
 import { Task } from '@/src/domain/entities/task/task'
 import { FinishTask } from '@/src/domain/use-cases/task/finish-task'
+import { TaskRepository } from '../../protocols/repositories/task-repository'
 
 export class FinishTaskUseCase implements FinishTask {
   constructor(private readonly taskRepository: TaskRepository) {}

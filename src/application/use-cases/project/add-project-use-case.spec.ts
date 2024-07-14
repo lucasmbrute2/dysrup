@@ -1,15 +1,18 @@
 import { Project } from '@/src/domain/entities/project/project'
-import { ProjectRepository } from '../protocols/repositories/project-repository'
-import { makeProjectModel, makeProjectRepositoryStub } from '../tests/factories'
-import { AddProjectUseCase } from './add-project-use-case'
 import { makeProjectProps } from '@/src/domain/entities/project/project-factory'
+import { AddProjectUseCase } from './add-project-use-case'
+import { ProjectRepository } from '../../protocols/repositories/project-repository'
+import {
+  makeProjectModel,
+  makeProjectRepositoryStub,
+} from '../../tests/factories'
 
-type SutTypes = {
+type Sut = {
   sut: AddProjectUseCase
   projectRepositoryStub: ProjectRepository
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): Sut => {
   const projectRepositoryStub = makeProjectRepositoryStub()
   const addProjectUseCase = new AddProjectUseCase(projectRepositoryStub)
 
@@ -30,7 +33,7 @@ describe('AddProject use case', () => {
       id: projectResponse.id,
       started_at: projectResponse.started_at,
     })
-    expect(addSpy).toHaveBeenCalledWith(project)
+    expect(addSpy).toHaveBeenCalledWith(projectResponse)
   })
 
   it('should return Project on success', async () => {
