@@ -1,6 +1,6 @@
 import { BadRequestError } from '../errors/bad-request-error'
 import { ServerError } from '../errors/server-error'
-import { HttpResponse } from '../protocols/http'
+import { HttpRequest, HttpResponse } from '../protocols/http'
 
 export function badRequest(error: Error): HttpResponse {
   return {
@@ -16,6 +16,20 @@ export function serverError(error: Error): HttpResponse {
   }
 }
 
+export function conflict(error: Error): HttpResponse {
+  return {
+    body: error?.message,
+    statusCode: 409,
+  }
+}
+
+export function noResponse(): HttpResponse {
+  return {
+    body: null,
+    statusCode: 204,
+  }
+}
+
 export function ok(data: any): HttpResponse {
   return {
     body: data,
@@ -27,12 +41,5 @@ export function created(data: any): HttpResponse {
   return {
     body: data,
     statusCode: 201,
-  }
-}
-
-export function conflict(error: Error): HttpResponse {
-  return {
-    body: error?.message,
-    statusCode: 409,
   }
 }

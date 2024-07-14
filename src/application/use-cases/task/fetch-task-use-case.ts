@@ -5,7 +5,7 @@ import { TaskRepository } from '../../protocols/repositories/task-repository'
 export class FetchTaskUseCase implements FetchTaskByProjectId {
   constructor(private readonly taskRepository: TaskRepository) {}
 
-  async fetchByProjectId(id: string): Promise<Task[]> {
-    return await this.taskRepository.fetchByProjectId(id)
+  async fetch(projectId: string): Promise<Task[]> {
+    return await this.taskRepository.fetchByProjectId(projectId)
   }
 }

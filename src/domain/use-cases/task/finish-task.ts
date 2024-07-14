@@ -1,5 +1,5 @@
 import { Task } from '../../entities/task/task'
 
 export interface FinishTask {
-  finish(id: string): Promise<Task | null>
+  finish(projectId: string): Promise<Task | null>
 }

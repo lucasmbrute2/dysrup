@@ -24,7 +24,7 @@ describe('FetchTask use case', () => {
       'fetchByProjectId'
     )
 
-    await sut.fetchByProjectId('any-id')
+    await sut.fetch('any-id')
     expect(fetchByProjectIdSpy).toHaveBeenCalledOnce()
     expect(fetchByProjectIdSpy).toHaveBeenCalledWith('any-id')
   })

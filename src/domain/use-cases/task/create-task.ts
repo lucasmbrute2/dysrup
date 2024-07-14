@@ -1,4 +1,3 @@
-import { Uuid } from '@/src/shared/domain/uuid'
 import { Task } from '../../entities/task/task'
 
 export type AddTaskModel = {

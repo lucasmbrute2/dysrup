@@ -1,3 +1,3 @@
 export interface DeleteTask {
-  erase(id: string): Promise<void>
+  erase(projectId: string): Promise<void>
 }
