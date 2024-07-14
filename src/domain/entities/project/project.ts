@@ -1,5 +1,13 @@
 import { Uuid } from '@/src/shared/domain/uuid'
-import { Task } from '../task/task'
+import { Task, TaskView } from '../task/task'
+
+export type ProjectView = {
+  id: string
+  name: string
+  description: string
+  started_at: string
+  tasks: TaskView[]
+}
 
 export type ProjectConstructorProps = {
   id?: Uuid
@@ -34,7 +42,7 @@ export class Project {
     this.started_at = startedAt
   }
 
-  toJSON() {
+  toJSON(): ProjectView {
     let started_at = null
     if (this.started_at) {
       const year = this.started_at.getFullYear()
@@ -48,7 +56,7 @@ export class Project {
       name: this.name,
       description: this.description,
       started_at,
-      tasks: this.tasks ?? [],
+      tasks: this.tasks.map((task) => task.toJSON()) ?? [],
     }
   }
 }

@@ -1,5 +1,13 @@
 import { Uuid } from '@/src/shared/domain/uuid'
 
+export type TaskView = {
+  id: string
+  title: string
+  description: string
+  finished_at: string | null
+  project_id: string
+}
+
 export type TaskConstructorProps = {
   id?: Uuid
   title: string
@@ -25,7 +33,7 @@ export class Task {
     this.finished_at = new Date()
   }
 
-  toJSON() {
+  toJSON(): TaskView {
     let finished_at = null
     if (this.finished_at) {
       const year = this.finished_at.getFullYear()
@@ -39,7 +47,7 @@ export class Task {
       title: this.title,
       description: this.description,
       finished_at,
-      project_id: this.project_id,
+      project_id: this.project_id.toString(),
     }
   }
 }

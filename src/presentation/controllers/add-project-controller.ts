@@ -5,12 +5,13 @@ import {
 import { Controller } from '../protocols/controller'
 import { HttpRequest, HttpResponse } from '../protocols/http'
 import { created, serverError } from '../helpers/http-helper'
+import { ProjectView } from '@/src/domain/entities/project/project'
 
 export class AddProjectController implements Controller {
   constructor(private readonly addProject: AddProject) {}
   async handle(
     httpRequest?: HttpRequest<AddProjectModel>
-  ): Promise<HttpResponse<AddProjectModel>> {
+  ): Promise<HttpResponse<ProjectView>> {
     try {
       const { description, name, started_at, tasks } = httpRequest.body
       const project = await this.addProject.add({
