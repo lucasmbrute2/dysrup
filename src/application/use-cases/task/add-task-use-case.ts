@@ -15,7 +15,10 @@ export class AddTaskUseCase implements AddTask {
       data.project_id.toString()
     )
 
-    if (!project) throw new Error('Project not found')
+    if (!project) {
+      const PROJECT_NOT_FOUND = null
+      return PROJECT_NOT_FOUND
+    }
 
     const task = new Task({
       description: data.description,

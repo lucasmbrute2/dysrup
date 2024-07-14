@@ -28,17 +28,16 @@ const makeSut = (): Sut => {
 }
 
 describe('AddTask use case', () => {
-  it('should throw if did not find any project by id', async () => {
-    expect(async () => {
-      const { sut, inMemoryProjectRepository } = makeSut()
-      const project = makeProject()
-      await inMemoryProjectRepository.add(project)
+  it('should return null if did not find any project by id', async () => {
+    const { sut, inMemoryProjectRepository } = makeSut()
+    const project = makeProject()
+    await inMemoryProjectRepository.add(project)
+    const response = await sut.add({
+      ...makeTaskModel(project.id.toString()),
+      project_id: 'wrong-project-id',
+    })
 
-      return await sut.add({
-        ...makeTaskModel(project.id.toString()),
-        project_id: 'wrong-project-id',
-      })
-    }).rejects.toBeInstanceOf(Error)
+    expect(response).toBeNull()
   })
 
   it('should call projectRepository with correct ID', async () => {
