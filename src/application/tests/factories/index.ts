@@ -40,6 +40,9 @@ export const makeProjectRepositoryStub = (): ProjectRepository => {
 
 export const makeTaskRepositoryStub = (): TaskRepository => {
   class TaskRepositoryStub implements TaskRepository {
+    async findById(id: string): Promise<Task | null> {
+      return Promise.resolve(null)
+    }
     async add(task: Task): Promise<Task> {
       return Promise.resolve(null)
     }

@@ -5,5 +5,5 @@ export type ChangeProjectModel = {
 }
 
 export interface ChangeProject {
-  edit(project: ChangeProjectModel): Promise<void>
+  edit(id: string, project: ChangeProjectModel): Promise<void>
 }

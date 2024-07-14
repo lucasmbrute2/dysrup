@@ -1,3 +1,5 @@
+import { Task } from '../../entities/task/task'
+
 export type ChangeTaskModel = {
   title?: string
   description?: string
@@ -5,5 +7,5 @@ export type ChangeTaskModel = {
 }
 
 export interface ChangeTask {
-  edit(task: ChangeTaskModel): Promise<void>
+  edit(id: string, data: ChangeTaskModel): Promise<Task | null>
 }
