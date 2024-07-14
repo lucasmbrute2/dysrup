@@ -1,4 +1,5 @@
 import { Uuid } from '@/src/shared/domain/uuid'
+import { Task } from '../task/task'
 
 export type ProjectConstructorProps = {
   id?: Uuid
@@ -12,6 +13,7 @@ export class Project {
   name: string
   description: string
   started_at: Date
+  tasks?: Task[]
 
   constructor(props: ProjectConstructorProps) {
     this.id = props.id ?? new Uuid()

@@ -1,11 +1,11 @@
 import { Project } from './project'
 import { makeProject } from './project-factory'
 
-type SutTypes = {
+type Sut = {
   sut: Project
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): Sut => {
   return {
     sut: makeProject(),
   }
