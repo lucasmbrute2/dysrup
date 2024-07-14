@@ -28,6 +28,7 @@ describe('AddProject use case', () => {
     const project = new Project({
       ...makeProjectModel(),
       id: projectResponse.id,
+      started_at: projectResponse.started_at,
     })
     expect(addSpy).toHaveBeenCalledWith(project)
   })

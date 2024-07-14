@@ -19,4 +19,13 @@ export class InMemoryProjectRepository implements ProjectRepository {
     this.projects.push(project)
     return project
   }
+
+  async findById(id: string): Promise<Project | null> {
+    const project = this.projects.find(
+      (project) => project.id.toString() === id
+    )
+
+    if (!project) return null
+    return project
+  }
 }

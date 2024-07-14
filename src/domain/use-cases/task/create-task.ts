@@ -4,8 +4,7 @@ import { Task } from '../../entities/task/task'
 export type AddTaskModel = {
   title: string
   description: string
-  finished_at?: Date
-  project_id: Uuid
+  project_id: string
 }
 
 export interface AddTask {
