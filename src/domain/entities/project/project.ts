@@ -33,4 +33,22 @@ export class Project {
   changeStartedAt(startedAt: Date) {
     this.started_at = startedAt
   }
+
+  toJSON() {
+    let started_at = null
+    if (this.started_at) {
+      const year = this.started_at.getFullYear()
+      const month = String(this.started_at.getMonth() + 1).padStart(2, '0')
+      const day = String(this.started_at.getDate()).padStart(2, '0')
+      started_at = `${year}-${month}-${day}`
+    }
+
+    return {
+      id: this.id.toString(),
+      name: this.name,
+      description: this.description,
+      started_at,
+      tasks: this.tasks ?? [],
+    }
+  }
 }
