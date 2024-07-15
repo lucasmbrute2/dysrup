@@ -56,7 +56,7 @@ export class Project {
       name: this.name,
       description: this.description,
       started_at,
-      tasks: this.tasks.map((task) => task.toJSON()) ?? [],
+      tasks: this.tasks?.map((task) => task.toJSON()) ?? [],
     }
   }
 }
