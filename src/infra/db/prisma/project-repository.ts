@@ -1,10 +1,10 @@
 import { ProjectRepository } from "@/src/application/protocols/repositories/project-repository";
 import { Project } from "@/src/domain/entities/project/project";
-import { prisma as prismaClient } from "@/src/main/server"
 import { PrismaProjectMapper } from "./mappers/project-mapper";
+import { PrismaClient } from "@prisma/client";
 
 export class PrismaProjectRepository implements ProjectRepository {
-  private readonly prisma = prismaClient.project
+  private readonly prisma = new PrismaClient().project
 
   async fetch(): Promise<Project[]> {
     const projects = await this.prisma.findMany()  
@@ -33,7 +33,7 @@ export class PrismaProjectRepository implements ProjectRepository {
         id
       }
     })
-
+    if (!project) return null
     return PrismaProjectMapper.toDomain(project)
   }
 

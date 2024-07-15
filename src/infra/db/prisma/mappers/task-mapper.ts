@@ -2,7 +2,7 @@ import { Task } from "@/src/domain/entities/task/task";
 import { Uuid } from "@/src/shared/domain/uuid";
 import { Task as PrismaTaskEntity } from "@prisma/client"
 
-export class TaskProjectMapper {
+export class PrismaTaskMapper {
   static toPrisma(task: Task): PrismaTaskEntity {
     return {
       id: task.id.toString(),
