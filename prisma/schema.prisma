@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String    @id()
+  name        String    @db.VarChar(100)
+  description String    @db.VarChar(200)
+  started_at  DateTime?
+  tasks       Task[]
+
+  @@map("projects")
+}
+
+model Task {
+  id          String   @id()
+  title       String   @db.VarChar(100)
+  description String   @db.VarChar(200)
+  project_id  String?
+  Project     Project? @relation(fields: [project_id], references: [id])
+
+  @@map("tasks")
+}
