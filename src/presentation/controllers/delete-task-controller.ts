@@ -4,7 +4,7 @@ import { Controller } from '../protocols/controller'
 import { HttpRequest, HttpResponse } from '../protocols/http'
 
 type DeleteTaskParams = {
-  project_id: string
+  id: string
 }
 
 export class DeleteTaskController implements Controller {
@@ -14,8 +14,8 @@ export class DeleteTaskController implements Controller {
     httpRequest: HttpRequest<any, DeleteTaskParams>
   ): Promise<HttpResponse> {
     try {
-      const { project_id } = httpRequest.params
-      await this.deleteTask.erase(project_id)
+      const { id } = httpRequest.params
+      await this.deleteTask.erase(id)
     } catch (error) {
       console.error(error)
       return serverError(error)
