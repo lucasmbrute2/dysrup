@@ -4,7 +4,7 @@ import { Task } from '../../entities/task/task'
 export type AddProjectModel = {
   name: string
   description: string
-  started_at?: Date
+  started_at: Date
   tasks?: Task[]
 }
 
