@@ -21,6 +21,8 @@ model Task {
   id          String   @id()
   title       String   @db.VarChar(100)
   description String   @db.VarChar(200)
+  finished_at DateTime?
+
   project_id  String?
   Project     Project? @relation(fields: [project_id], references: [id])
 
