@@ -23,7 +23,7 @@ export function conflict(error: Error): HttpResponse {
   }
 }
 
-export function noResponse(): HttpResponse {
+export function noContent(): HttpResponse {
   return {
     body: null,
     statusCode: 204,

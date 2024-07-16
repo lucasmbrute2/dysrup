@@ -1,5 +1,5 @@
 import { DeleteTask } from '@/src/domain/use-cases/task/delete-task'
-import { serverError } from '../helpers/http-helper'
+import { noContent, serverError } from '../helpers/http-helper'
 import { Controller } from '../protocols/controller'
 import { HttpRequest, HttpResponse } from '../protocols/http'
 
@@ -16,6 +16,7 @@ export class DeleteTaskController implements Controller {
     try {
       const { id } = httpRequest.params
       await this.deleteTask.erase(id)
+      return noContent()
     } catch (error) {
       console.error(error)
       return serverError(error)
