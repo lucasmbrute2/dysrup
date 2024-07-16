@@ -5,7 +5,7 @@ import { HttpRequest, HttpResponse } from '../protocols/http'
 import { BadRequestError } from '../errors/bad-request-error'
 
 type FinishTaskParams = {
-  project_id: string
+  id: string
 }
 
 export class FinishTaskController implements Controller {
@@ -15,8 +15,8 @@ export class FinishTaskController implements Controller {
     httpRequest: HttpRequest<any, FinishTaskParams>
   ): Promise<HttpResponse> {
     try {
-      const { project_id } = httpRequest.params
-      const finishedTask = await this.finishTask.finish(project_id)
+      const { id } = httpRequest.params
+      const finishedTask = await this.finishTask.finish(id)
       if (!finishedTask)
         return badRequest(new BadRequestError('Task not found.'))
 
