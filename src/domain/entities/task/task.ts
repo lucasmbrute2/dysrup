@@ -13,6 +13,7 @@ export type TaskConstructorProps = {
   title: string
   description: string
   project_id: Uuid
+  finished_at?: Date
 }
 
 export class Task {
@@ -27,6 +28,7 @@ export class Task {
     this.title = props.title
     this.description = props.description
     this.project_id = props.project_id
+    this.finished_at = props.finished_at ?? null
   }
 
   finish() {
@@ -36,10 +38,7 @@ export class Task {
   toJSON(): TaskView {
     let finished_at = null
     if (this.finished_at) {
-      const year = this.finished_at.getFullYear()
-      const month = String(this.finished_at.getMonth() + 1).padStart(2, '0')
-      const day = String(this.finished_at.getDate()).padStart(2, '0')
-      finished_at = `${year}-${month}-${day}`
+      finished_at = this.makeEntityFormatDate(this.finished_at)
     }
 
     return {
@@ -49,5 +48,13 @@ export class Task {
       finished_at,
       project_id: this.project_id.toString(),
     }
+  }
+
+  private makeEntityFormatDate(date: Date): string {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+
+    return `${day}-${month}-${year}`
   }
 }
