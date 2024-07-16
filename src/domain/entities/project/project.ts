@@ -13,7 +13,8 @@ export type ProjectConstructorProps = {
   id?: Uuid
   name: string
   description: string
-  started_at?: Date
+  started_at: Date
+  tasks?: Task[]
 }
 
 export class Project {
@@ -27,7 +28,11 @@ export class Project {
     this.id = props.id ?? new Uuid()
     this.name = props.name
     this.description = props.description
-    this.started_at = props.started_at
+    this.started_at =
+      props.started_at instanceof Date
+        ? props.started_at
+        : new Date(props.started_at)
+    this.tasks = props.tasks ?? []
   }
 
   changeName(name: string) {
@@ -45,10 +50,7 @@ export class Project {
   toJSON(): ProjectView {
     let started_at = null
     if (this.started_at) {
-      const year = this.started_at.getFullYear()
-      const month = String(this.started_at.getMonth() + 1).padStart(2, '0')
-      const day = String(this.started_at.getDate()).padStart(2, '0')
-      started_at = `${year}-${month}-${day}`
+      started_at = this.makeEntityFormatDate(this.started_at)
     }
 
     return {
@@ -58,5 +60,13 @@ export class Project {
       started_at,
       tasks: this.tasks?.map((task) => task.toJSON()) ?? [],
     }
+  }
+
+  private makeEntityFormatDate(date: Date): string {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+
+    return `${day}-${month}-${year}`
   }
 }
