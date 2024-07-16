@@ -9,7 +9,7 @@ const taskRouter = Router()
 
 taskRouter.post('/:project_id', adaptRoute(makeAddTaskController()))
 taskRouter.delete('/:id', adaptRoute(makeDeleteTaskController()))
-taskRouter.put('/:id', adaptRoute(makeFinishTaskController()))
+taskRouter.put('/finish/:id', adaptRoute(makeFinishTaskController()))
 taskRouter.get('/:project_id', adaptRoute(makeFetchTaskByProjectController()))
 
 export { taskRouter }
