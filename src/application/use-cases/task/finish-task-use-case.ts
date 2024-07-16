@@ -12,6 +12,9 @@ export class FinishTaskUseCase implements FinishTask {
       const TASK_NOT_FOUND = null
       return TASK_NOT_FOUND
     }
+    if (task.finished_at) {
+      return task
+    }
 
     task.finish()
     await this.taskRepository.edit(id, task)
