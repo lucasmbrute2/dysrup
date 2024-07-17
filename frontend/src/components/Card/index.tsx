@@ -42,12 +42,25 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
-export function CardExpansable({ name, description, started_at }: Project) {
+export function CardExpansable({
+  name,
+  description,
+  started_at,
+  tasks,
+}: Project) {
   const [expanded, setExpanded] = useState<string | false>("panel1");
+  const [innerExpaned, setInnerExpanded] = useState<string | false>(
+    "innerPanel"
+  );
 
   const handleChange =
     (panel: string) => (_: SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
+    };
+
+  const handleInnerChange =
+    (panel: string) => (_: SyntheticEvent, newExpanded: boolean) => {
+      setInnerExpanded(newExpanded ? panel : false);
     };
 
   return (
@@ -57,12 +70,35 @@ export function CardExpansable({ name, description, started_at }: Project) {
         onChange={handleChange("panel1")}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>{name}</Typography>
+          <Typography variant="h5">Projeto: {name}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>{description}</Typography>
-          <Typography>{started_at}</Typography>
+          <Typography className="block mt-2 text-lime-600">
+            Início em: {started_at}
+          </Typography>
         </AccordionDetails>
+
+        {tasks?.map((task, i) => (
+          <Accordion
+            disabled={!!task?.finished_at}
+            key={task.id}
+            expanded={innerExpaned === "innerPanel"}
+            onChange={handleInnerChange("innerPanel")}
+          >
+            <AccordionSummary
+              aria-controls="panel2d-content"
+              id="panel2d-header"
+            >
+              <Typography>
+                Tarefa {i + 1}: {task.title}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography>{task.description}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
       </Accordion>
     </div>
   );
