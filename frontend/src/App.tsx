@@ -3,12 +3,20 @@ import "./App.css";
 import { api } from "./utils/axios";
 import { CardExpansable } from "./components/Card";
 
+export type Task = {
+  id: string;
+  title: string;
+  description: string;
+  finished_at: null;
+  project_id: string;
+};
+
 export type Project = {
   id: string;
   name: string;
   description: string;
-  started_at: string | null;
-  tasks?: unknown[];
+  started_at: string;
+  tasks: Task[];
 };
 
 function App() {
