@@ -8,6 +8,10 @@ RUN apk update \
 
 WORKDIR /app
 
+COPY entrypoint.sh /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 COPY package.json ./
 
 COPY prisma ./prisma/
@@ -18,6 +22,4 @@ COPY . ./
 
 RUN npx prisma version
 
-RUN npx prisma migrate
-
-ENTRYPOINT [ "npm", "run", "start:dev" ]
+ENTRYPOINT ["entrypoint.sh"]
