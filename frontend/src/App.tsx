@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { api } from "./utils/axios";
-import { Card } from "./components/Card";
+import { CardExpansable } from "./components/Card";
 
 export type Project = {
   id: string;
@@ -37,7 +37,7 @@ function App() {
       <div className="mt-8">
         {projects.map((project) => (
           <div key={project.id}>
-            <Card {...project} />
+            <CardExpansable {...project} />
           </div>
         ))}
       </div>
