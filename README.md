@@ -1,1 +1,1 @@
-Consulte os README de cada stask!
+Consulte os README de cada stack!
